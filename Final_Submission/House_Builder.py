@@ -138,7 +138,7 @@ def posify(Coordinates, orientation):
             p =  Coordinates[1][g][0]
             u =  Coordinates[1][g][1]
             v =  Coordinates[1][g][2]
-            Coordinates[1][g] = block_poses.append(Pose(
+            Coordinates[1][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
                       orientation=orientation))
 
@@ -148,7 +148,7 @@ def posify(Coordinates, orientation):
             p =  Coordinates[2][g][0]
             u =  Coordinates[2][g][1]
             v =  Coordinates[2][g][2]
-            Coordinates[2][g] = block_poses.append(Pose(
+            Coordinates[2][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
                       orientation=orientation))
 
@@ -158,7 +158,7 @@ def posify(Coordinates, orientation):
             p =  Coordinates[3][g][0]
             u =  Coordinates[3][g][1]
             v =  Coordinates[3][g][2]
-            Coordinates[3][g] = block_poses.append(Pose(
+            Coordinates[3][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
                       orientation=orientation))
 
@@ -168,7 +168,7 @@ def posify(Coordinates, orientation):
             p =  Coordinates[4][g][0]
             u =  Coordinates[4][g][1]
             v =  Coordinates[4][g][2]
-            Coordinates[4][g] = block_poses.append(Pose(
+            Coordinates[4][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
                       orientation=orientation))
 
@@ -178,7 +178,7 @@ def posify(Coordinates, orientation):
             p =  Coordinates[5][g][0]
             u =  Coordinates[5][g][1]
             v =  Coordinates[5][g][2]
-            Coordinates[5][g] = block_poses.append(Pose(
+            Coordinates[5][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
                       orientation=orientation))
 
@@ -188,7 +188,7 @@ def posify(Coordinates, orientation):
             p =  Coordinates[6][g][0]
             u =  Coordinates[6][g][1]
             v =  Coordinates[6][g][2]
-            Coordinates[6][g] = block_poses.append(Pose(
+            Coordinates[6][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
                       orientation=orientation))
 
@@ -198,7 +198,7 @@ def posify(Coordinates, orientation):
             p =  Coordinates[7][g][0]
             u =  Coordinates[7][g][1]
             v =  Coordinates[7][g][2]
-            Coordinates[7][g] = block_poses.append(Pose(
+            Coordinates[7][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
                       orientation=orientation))
 
