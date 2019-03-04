@@ -1,3 +1,34 @@
+#!/usr/bin/env python
+import argparse
+import struct
+import sys
+import copy
+import time
+
+import rospy
+import rospkg
+
+from gazebo_msgs.srv import (
+    SpawnModel,
+    DeleteModel,
+)
+from geometry_msgs.msg import (
+    PoseStamped,
+    Pose,
+    Point,
+    Quaternion,
+)
+from std_msgs.msg import (
+    Header,
+    Empty,
+)
+
+from baxter_core_msgs.srv import (
+    SolvePositionIK,
+    SolvePositionIKRequest,
+)
+
+import baxter_interface
 from Model_Spawn import *
 from House_Builder import *
 from Pick_n_Place import *
@@ -58,7 +89,7 @@ def main():
     base = 3
     height = 1
 
-    block_poses = house_builder(base, height)
+    block_poses = posify(house_coordinates())
 
     # move to the desired starting angles
     hocl.move_to_start(left_start)
@@ -66,12 +97,13 @@ def main():
 
     # spawn environment
     load_tables()
+    time.sleep(3)
 
     # loop to pick and place the entire structure
     i = 0
 
-    while not rospy.is_shutdown() & i > height:
-        for j in range(block_poses[i]):
+    while not rospy.is_shutdown() & i > len(block_poses):
+        for j in range(len(block_poses[i])):
             if i % 2:
                 print("\nHorizontal block row")
                 if j % 2:
@@ -80,14 +112,18 @@ def main():
                     print("\nPicking...")
                     hocl.pick(lh_pick)
                     print("\nPlacing...")
-                    hocl.pick(block_poses[i][j])
+                    hocl.place(block_poses[i][j])
+                    print("Returning to start...")
+                    hocl.move_to_start(left_start)
                 else:
                     print("\nUsing right")
                     load_Flat(i,'r')
                     print("\nPicking...")
                     hocr.pick(rh_pick)
                     print("\nPlacing...")
-                    hocr.pick(block_poses[i][j])
+                    hocr.place(block_poses[i][j])
+                    print("Returning to start...")
+                    hocr.move_to_start(right_start)
             else:
                 print("\nVertical block row")
                 if j % 2:
@@ -96,14 +132,18 @@ def main():
                     print("\nPicking...")
                     hocl.pick(lv_pick)
                     print("\nPlacing...")
-                    hocl.pick(block_poses[i][j])
+                    hocl.place(block_poses[i][j])
+                    print("Returning to start...")
+                    hocl.move_to_start(left_start)
                 else:
                     print("\nUsing right")
                     load_UP(i,'r')
                     print("\nPicking...")
-                    hocr.pick(rv_pick)
+                    hocr.place(rv_pick)
                     print("\nPlacing...")
                     hocr.pick(block_poses[i][j])
+                    print("Returning to start...")
+                    hocr.move_to_start(right_start)
             j += 1
         i += 1
     return
