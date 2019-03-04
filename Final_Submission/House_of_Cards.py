@@ -72,14 +72,14 @@ def main():
                 print("\nHorizontal block row")
                 if j % 2:
                     print("\nUsing left")
-                    #spawn
+                    load_Flat(i,'l')
                     print("\nPicking...")
                     hocl.pick(lh_pick)
                     print("\nPlacing...")
                     hocl.pick(block_poses[i][j])
                 else:
                     print("\nUsing right")
-                    #spawn
+                    load_Flat(i,'r')
                     print("\nPicking...")
                     hocr.pick(rh_pick)
                     print("\nPlacing...")
@@ -88,14 +88,14 @@ def main():
                 print("\nVertical block row")
                 if j % 2:
                     print("\nUsing left")
-                    #spawn
+                    load_UP(i,'l')
                     print("\nPicking...")
                     hocl.pick(lv_pick)
                     print("\nPlacing...")
                     hocl.pick(block_poses[i][j])
                 else:
                     print("\nUsing right")
-                    #spawn
+                    load_UP(i,'r')
                     print("\nPicking...")
                     hocr.pick(rv_pick)
                     print("\nPlacing...")
