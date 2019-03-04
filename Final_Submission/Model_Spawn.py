@@ -72,7 +72,7 @@ def load_UP(block_no, block_side, block_pose_left=Pose(position=Point(x=0.1, y= 
     if block_side == 'l':
         try:
             spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
-            resp_urdf = spawn_urdf(block_no, block_xml, "/",
+            resp_urdf = spawn_urdf('Block %i' %block_no, block_xml, "/",
                                     block_pose_left, block_reference_frame)
         except rospy.ServiceException, e:
             rospy.logerr("Spawn SDF service call failed: {0}".format(e))
@@ -81,7 +81,7 @@ def load_UP(block_no, block_side, block_pose_left=Pose(position=Point(x=0.1, y= 
     elif block_side == 'r':
         try:
             spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
-            resp_urdf = spawn_urdf(block_no, block_xml, "/",
+            resp_urdf = spawn_urdf('Block %i' %block_no, block_xml, "/",
                                    block_pose_right, block_reference_frame)
         except rospy.ServiceException, e:
             rospy.logerr("Spawn SDF service call failed: {0}".format(e))
@@ -101,7 +101,7 @@ def load_Flat(block_no, block_side, block_pose_left=Pose(position=Point(x=0.3, y
     if block_side == 'l':
       try:
           spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
-          resp_urdf = spawn_urdf(('Flat %s' %block_no), block_xml, "/",
+          resp_urdf = spawn_urdf('Block %i' %block_no, block_xml, "/",
                                  block_pose_left, block_reference_frame)
       except rospy.ServiceException, e:
           rospy.logerr("Spawn SDF service call failed: {0}".format(e))
@@ -109,7 +109,7 @@ def load_Flat(block_no, block_side, block_pose_left=Pose(position=Point(x=0.3, y
     elif block_side == 'r':
       try:
           spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
-          resp_urdf2 = spawn_urdf(('Flat %s' %block_no), block_xml, "/",
+          resp_urdf2 = spawn_urdf('Block %i' %block_no, block_xml, "/",
                                  block_pose_right, block_reference_frame)
       except rospy.ServiceException, e:
           rospy.logerr("Spawn SDF service call failed: {0}".format(e))
