@@ -50,7 +50,7 @@ def house_coordinates():
 
                 y = coefficient_odd[count_brick-1]*h
 
-                z= int(((count_layer)/2))*(h+t) + h - 0.03 + 0.73
+                z= int(((count_layer)/2))*(h+t) + h - 0.03 + 0.1
 
                 #print(0,y,z)
 
@@ -63,14 +63,14 @@ def house_coordinates():
 
                 y= coefficient_odd[count_brick-1]*h
 
-                z= int(((count_layer)/2))*(h+t) - 0.03 + 0.73
+                z= int(((count_layer)/2))*(h+t) - 0.03 + 0.1
                 #print(0,y,z)
 
                 if count_layer == 8:
                     list_of_positions[7]=[(0.5,y,z)]
                 else:
                     list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
-                
+
                 count_brick += 1
 
             # if layer is EVEN NUMBER OF BRICKS and VERTICAL then... (layer 3, 7)
@@ -78,7 +78,7 @@ def house_coordinates():
 
                 y= coefficient_even[count_brick-1]*h
 
-                z= int(((count_layer)/2))*(h+t) + h - 0.03 + 0.73
+                z= int(((count_layer)/2))*(h+t) + h - 0.03 + 0.1
                 #print(0,y,z)
                 list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
 
@@ -89,7 +89,7 @@ def house_coordinates():
 
                 y= coefficient_even[count_brick-1]*h
 
-                z= int(((count_layer)/2))*(h+t) - 0.03 + 0.73
+                z= int(((count_layer)/2))*(h+t) - 0.03 + 0.1
                 #print(0,y,z)
                 list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
 
