@@ -34,7 +34,7 @@ def load_tables(table_pose1=Pose(position=Point(x=1.1, y=0, z=0.73)),
         table2_xml=table_file.read().replace('\n', '')
     rospy.wait_for_service('/gazebo/spawn_urdf_model')
 
-    #Spawn 1
+    #Spawn Table 1
     try:
         spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
         resp_urdf1 = spawn_urdf("table1", table1_xml, "/",
@@ -42,7 +42,7 @@ def load_tables(table_pose1=Pose(position=Point(x=1.1, y=0, z=0.73)),
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
-    #Spawn 2
+    #Spawn Table 2
     try:
         spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
         resp_urdf2 = spawn_urdf("table2", table2_xml, "/",
@@ -50,7 +50,7 @@ def load_tables(table_pose1=Pose(position=Point(x=1.1, y=0, z=0.73)),
     except rospy.ServiceException, e:
         rospy.logerr("Spawn SDF service call failed: {0}".format(e))
 
-    #Spawn 3
+    #Spawn Table 3
     try:
         spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
         resp_urdf3 = spawn_urdf("table3", table2_xml, "/",
