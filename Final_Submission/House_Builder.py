@@ -69,7 +69,7 @@ def house_coordinates():
                 if count_layer == 8:
                     list_of_positions[7]=[(0.7,y,z)]
                 else:
-                    list_of_positions[count_layer-1][count_brick-1] = (0.7,y,z)
+                    list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
                 
                 count_brick += 1
 
