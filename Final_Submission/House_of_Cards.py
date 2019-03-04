@@ -1,3 +1,7 @@
+from model_Spawn import *
+from House_Builder import * 
+from Pick_n_Place import *
+
 def main():
     """Team House of Cards
     A modification of the  the Pick and Place example which uses the
