@@ -1,5 +1,5 @@
 from model_Spawn import *
-from House_Builder import * 
+from House_Builder import *
 from Pick_n_Place import *
 
 def main():
@@ -42,7 +42,7 @@ def main():
                              w=0.00486450832011)
 
     lv_pick = Pose(
-        position=Point(x=0., y=0., z=-0.),
+        position=Point(x=0.100, y=0.700, z=0.27),
         orientation=orientation)
     rv_pick = Pose(
         position=Point(x=0., y=0., z=-0.),
