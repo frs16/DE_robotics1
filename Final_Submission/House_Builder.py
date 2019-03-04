@@ -3,6 +3,7 @@ from geometry_msgs.msg import (
     Pose,
     Point,
     Quaternion,
+)
 
 def house_coordinates():
 
