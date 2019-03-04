@@ -128,7 +128,7 @@ def posify(Coordinates, orientation):
         p =  Coordinates[0][g][0]
         u =  Coordinates[0][g][1]
         v =  Coordinates[0][g][2]
-        Coordinates[0][g] = block_poses.append(Pose(
+        Coordinates[0][g] =(Pose(
                 position=Point(x = p, y = u, z = v),
                 orientation=orientation))
 
