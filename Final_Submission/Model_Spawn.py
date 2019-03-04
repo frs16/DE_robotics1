@@ -16,7 +16,7 @@ from std_msgs.msg import (
     Empty,
 )
 
-def load_tables(table_pose1=Pose(position=Point(x=1.1, y=0, z=0.73)),
+def load_tables(table_pose1=Pose(position=Point(x=0.9, y=0, z=0.73)),
                        table_reference_frame1="world",
                        table_pose2=Pose(position=Point(x=0.6, y=1.1, z=0.73)),
                        table_reference_frame2="world",
@@ -62,7 +62,7 @@ def load_UP(block_no, block_side, block_pose_left=Pose(position=Point(x=0.1, y= 
                        block_reference_frame="world",
                        block_pose_right=Pose(position=Point(x=0.1, y= -0.7, z=0.74))):
     # Get Models' Path
-    model_path = rospkg.RosPack().get_path('baxter_sim_examples')+"/models/" 
+    model_path = rospkg.RosPack().get_path('baxter_sim_examples')+"/models/"
     block_xml = ''
     with open (model_path + "Upright/object.urdf", "r") as block_file:
           block_xml = block_file.read().replace('\n', '')
@@ -92,7 +92,7 @@ def load_Flat(block_no, block_side, block_pose_left=Pose(position=Point(x=0.3, y
                        block_reference_frame="world",
                        block_pose_right=Pose(position=Point(x=0.3, y=-0.7, z=0.73))):
     # Get Models' Path
-    model_path = rospkg.RosPack().get_path('baxter_sim_examples')+"/models/" 
+    model_path = rospkg.RosPack().get_path('baxter_sim_examples')+"/models/"
     block_xml = ''
     with open (model_path + "Flat/object.urdf", "r") as block_file:
         block_xml = block_file.read().replace('\n', '')
