@@ -45,13 +45,13 @@ def main():
         position=Point(x=0.100, y=0.700, z=0.27),
         orientation=orientation)
     rv_pick = Pose(
-        position=Point(x=0., y=0., z=-0.),
+        position=Point(x=0.1, y=-0.69, z=0.27),
         orientation=orientation)
     lh_pick = Pose(
-        position=Point(x=0.1, y=0, z=0.125312),
+        position=Point(x=0.3, y=0.7, z=0.13),
         orientation=orientation)
     rh_pick = Pose(
-        position=Point(x=0., y=0., z=-0.),
+        position=Point(x=0.3, y=-0.7, z=0.13),
         orientation=orientation)
 
     # base and height for the generated house of cards
