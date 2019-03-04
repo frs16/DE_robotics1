@@ -30,6 +30,7 @@ from baxter_core_msgs.srv import (
 )
 
 import baxter_interface
+
 from Model_Spawn import *
 from House_Builder import *
 from Pick_n_Place import *
@@ -102,6 +103,7 @@ def main():
 
     # loop to pick and place the entire structure
     i = 0
+    n = 1
 
     while not rospy.is_shutdown() & i > len(block_poses):
         for j in range(len(block_poses[i])):
@@ -109,42 +111,46 @@ def main():
                 print("\nHorizontal block row")
                 if j % 2:
                     print("\nUsing left")
-                    load_Flat(i,'l')
+                    load_Flat(n,'l')
                     print("\nPicking...")
                     hocl.pick(lh_pick)
                     print("\nPlacing...")
                     hocl.place(block_poses[i][j])
                     print("Returning to start...")
                     hocl.move_to_start(left_start)
+                    n+=1
                 else:
                     print("\nUsing right")
-                    load_Flat(i,'r')
+                    load_Flat(n,'r')
                     print("\nPicking...")
                     hocr.pick(rh_pick)
                     print("\nPlacing...")
                     hocr.place(block_poses[i][j])
                     print("Returning to start...")
                     hocr.move_to_start(right_start)
+                    n+=1
             else:
                 print("\nVertical block row")
                 if j % 2:
                     print("\nUsing left")
-                    load_UP(i,'l')
+                    load_UP(n,'l')
                     print("\nPicking...")
                     hocl.pick(lv_pick)
                     print("\nPlacing...")
                     hocl.place(block_poses[i][j])
                     print("Returning to start...")
                     hocl.move_to_start(left_start)
+                    n+=1
                 else:
                     print("\nUsing right")
-                    load_UP(i,'r')
+                    load_UP(n,'r')
                     print("\nPicking...")
-                    hocr.place(rv_pick)
+                    hocr.pick(rv_pick)
                     print("\nPlacing...")
-                    hocr.pick(block_poses[i][j])
+                    hocr.place(block_poses[i][j])
                     print("Returning to start...")
                     hocr.move_to_start(right_start)
+                    n+=1
             j += 1
         i += 1
     return

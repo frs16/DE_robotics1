@@ -28,8 +28,6 @@ from baxter_core_msgs.srv import (
 
 import baxter_interface
 
-
-
 class PickAndPlace(object):
     def __init__(self, limb, pick_hover = 0.15, place_hover = 0.25, verbose=True):
         self._limb_name = limb # string
