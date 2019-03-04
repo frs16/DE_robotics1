@@ -29,10 +29,9 @@ from baxter_core_msgs.srv import (
 import baxter_interface
 
 class PickAndPlace(object):
-    def __init__(self, limb, pick_hover = 0.15, place_hover = 0.25, verbose=True):
+    def __init__(self, limb, hover = 0.15, verbose=True):
         self._limb_name = limb # string
-        self._pick_hover = pick_hover # in meters
-        self._place_hover = place_hover # in meters
+        self._hover = hover # in meters
         #how far to hover above brick before pick to prevent knock over
         self._verbose = verbose # bool
         self._limb = baxter_interface.Limb(limb)
@@ -102,17 +101,10 @@ class PickAndPlace(object):
         self._gripper.close()
         rospy.sleep(1.0)
 
-    def _pick_approach(self, pose):
+    def _approach(self, pose):
         approach = copy.deepcopy(pose)
         # approach with a pose the hover-distance above the requested pose
-        approach.position.z = approach.position.z + self._pick_hover
-        joint_angles = self.ik_request(approach)
-        self._guarded_move_to_joint_position(joint_angles)
-
-    def _place_approach(self, pose):
-        approach = copy.deepcopy(pose)
-        # approach with a pose the hover-distance above the requested pose
-        approach.position.z = approach.position.z + self._place_hover
+        approach.position.z = approach.position.z + self._hover
         joint_angles = self.ik_request(approach)
         self._guarded_move_to_joint_position(joint_angles)
 
@@ -122,7 +114,7 @@ class PickAndPlace(object):
         ik_pose = Pose()
         ik_pose.position.x = current_pose['position'].x
         ik_pose.position.y = current_pose['position'].y
-        ik_pose.position.z = pose.position.z + self._place_hover
+        ik_pose.position.z = pose.position.z + self._hover
         ik_pose.orientation.x = current_pose['orientation'].x
         ik_pose.orientation.y = current_pose['orientation'].y
         ik_pose.orientation.z = current_pose['orientation'].z
@@ -137,7 +129,7 @@ class PickAndPlace(object):
         ik_pose = Pose()
         ik_pose.position.x = current_pose['position'].x
         ik_pose.position.y = current_pose['position'].y
-        ik_pose.position.z = current_pose['position'].z + self._pick_hover
+        ik_pose.position.z = current_pose['position'].z + self._hover
         ik_pose.orientation.x = current_pose['orientation'].x
         ik_pose.orientation.y = current_pose['orientation'].y
         ik_pose.orientation.z = current_pose['orientation'].z
@@ -155,7 +147,7 @@ class PickAndPlace(object):
         # open the gripper
         self.gripper_open()
         # servo above pose
-        self._pick_approach(pose)
+        self._approach(pose)
         # servo to pose
         self._servo_to_pose(pose)
         # close gripper
@@ -166,7 +158,7 @@ class PickAndPlace(object):
     def place(self, pose):
         self._lift(pose)
         # servo above pose
-        self._place_approach(pose)
+        self._approach(pose)
         # servo to pose
         self._servo_to_pose(pose)
         # open the gripper
