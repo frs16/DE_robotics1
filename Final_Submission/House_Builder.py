@@ -105,22 +105,20 @@ def house_coordinates():
 def posify(Coordinates, v_orientation, h_orientation):
 
     #if block_poses[i][j] = int
-    for i in range(len(Coordinates))
+    for i in range(len(Coordinates)):
         for j in range(len(Coordinates[i])):
             if i % 2:
-                g = i
-                p =  Coordinates[0][g][0]
-                u =  Coordinates[0][g][1]
-                v =  Coordinates[0][g][2]
-                Coordinates[0][g] =(Pose(
+                p =  Coordinates[i][j][0]
+                u =  Coordinates[i][j][1]
+                v =  Coordinates[i][j][2]
+                Coordinates[i][j] =(Pose(
                         position=Point(x = p, y = u, z = v),
                         orientation=h_orientation))
             else:
-                g = i
-                p =  Coordinates[0][g][0]
-                u =  Coordinates[0][g][1]
-                v =  Coordinates[0][g][2]
-                Coordinates[0][g] =(Pose(
+                p =  Coordinates[i][j][0]
+                u =  Coordinates[i][j][1]
+                v =  Coordinates[i][j][2]
+                Coordinates[i][j] =(Pose(
                         position=Point(x = p, y = u, z = v),
                         orientation=v_orientation))
 
