@@ -85,7 +85,7 @@ def main():
     quat = quaternion_multiply(quaternion_from_euler(0,0,1.57),orig)
 
     # An orientation for gripper to be above and perpendicular to the bricks
-    h_orientation = Quaternion(x=quat0], y=quat[1], z=quat[2], w=quat[3])
+    h_orientation = Quaternion(x=quat[0], y=quat[1], z=quat[2], w=quat[3])
 
     lv_pick = Pose(
         position=Point(x=0.100, y=0.700, z=0.27),

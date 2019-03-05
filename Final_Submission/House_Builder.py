@@ -104,86 +104,25 @@ def house_coordinates():
 
 def posify(Coordinates, v_orientation, h_orientation):
 
-    block_poses = list()
     #if block_poses[i][j] = int
-    for i in range(0,5):
-        g = i
-        p =  Coordinates[0][g][0]
-        u =  Coordinates[0][g][1]
-        v =  Coordinates[0][g][2]
-        Coordinates[0][g] =(Pose(
-                position=Point(x = p, y = u, z = v),
-                orientation=v_orientation))
-
-    if len(block_poses) == 5: #checks the bottom layer has been added to the list
-        for i in range(0,4):
-            g = i
-            p =  Coordinates[1][g][0]
-            u =  Coordinates[1][g][1]
-            v =  Coordinates[1][g][2]
-            Coordinates[1][g] = (Pose(
-                       position=Point(x = p, y = u, z = v),
-                      orientation=h_orientation))
-
-    if len(block_poses) == 9: #Checks the bottom two layers
-        for i in range(0,4):
-            g = i
-            p =  Coordinates[2][g][0]
-            u =  Coordinates[2][g][1]
-            v =  Coordinates[2][g][2]
-            Coordinates[2][g] = (Pose(
-                       position=Point(x = p, y = u, z = v),
-                      orientation=v_orientation))
-
-    if len(block_poses) == 13: #Checks the bottom three layers
-        for i in range(0,3):
-            g = i
-            p =  Coordinates[3][g][0]
-            u =  Coordinates[3][g][1]
-            v =  Coordinates[3][g][2]
-            Coordinates[3][g] = (Pose(
-                       position=Point(x = p, y = u, z = v),
-                      orientation=h_orientation))
-
-    if len(block_poses) == 16: #Checks the bottom four layers
-        for i in range(0,3):
-            g = i
-            p =  Coordinates[4][g][0]
-            u =  Coordinates[4][g][1]
-            v =  Coordinates[4][g][2]
-            Coordinates[4][g] = (Pose(
-                       position=Point(x = p, y = u, z = v),
-                      orientation=v_orientation))
-
-    if len(block_poses) == 19: #Checks the bottom four layers
-        for i in range(0,2):
-            g = i
-            p =  Coordinates[5][g][0]
-            u =  Coordinates[5][g][1]
-            v =  Coordinates[5][g][2]
-            Coordinates[5][g] = (Pose(
-                       position=Point(x = p, y = u, z = v),
-                      orientation=h_orientation))
-
-    if len(block_poses) == 21:
-        for i in range(0,2):
-            g = i
-            p =  Coordinates[6][g][0]
-            u =  Coordinates[6][g][1]
-            v =  Coordinates[6][g][2]
-            Coordinates[6][g] = (Pose(
-                       position=Point(x = p, y = u, z = v),
-                      orientation=v_orientation))
-
-    if len(block_poses) == 23:
-        for i in range(0,1):
-            g = i
-            p =  Coordinates[7][g][0]
-            u =  Coordinates[7][g][1]
-            v =  Coordinates[7][g][2]
-            Coordinates[7][g] = (Pose(
-                       position=Point(x = p, y = u, z = v),
-                      orientation=h_orientation))
+    for i in range(len(Coordinates))
+        for j in range(len(Coordinates[i])):
+            if i % 2:
+                g = i
+                p =  Coordinates[0][g][0]
+                u =  Coordinates[0][g][1]
+                v =  Coordinates[0][g][2]
+                Coordinates[0][g] =(Pose(
+                        position=Point(x = p, y = u, z = v),
+                        orientation=h_orientation))
+            else:
+                g = i
+                p =  Coordinates[0][g][0]
+                u =  Coordinates[0][g][1]
+                v =  Coordinates[0][g][2]
+                Coordinates[0][g] =(Pose(
+                        position=Point(x = p, y = u, z = v),
+                        orientation=v_orientation))
 
     print (Coordinates)
     return Coordinates
