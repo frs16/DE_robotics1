@@ -5,6 +5,8 @@ import struct
 import sys
 import copy
 import time
+import numpy as np
+from tf.transformations import *
 
 import rospy
 import rospkg
@@ -67,25 +69,36 @@ def main():
     hocl = PickAndPlace('left')
     hocr = PickAndPlace('right')
 
-    # An orientation for gripper fingers to be overhead and parallel to the bricks
-    orientation = Quaternion(
+    # An orientation for gripper to be above and parallel to the bricks
+    v_orientation = Quaternion(
                              x=-0.0249590815779,
                              y=0.999649402929,
                              z=0.00737916180073,
                              w=0.00486450832011)
 
+    # solving for second quaternion
+    orig = np.array([-0.0249590815779,
+                        0.999649402929,
+                        0.00737916180073,
+                        0.00486450832011])
+
+    quat = quaternion_multiply(quaternion_from_euler(0,0,1.57),orig)
+
+    # An orientation for gripper to be above and perpendicular to the bricks
+    h_orientation = Quaternion(x=quat0], y=quat[1], z=quat[2], w=quat[3])
+
     lv_pick = Pose(
         position=Point(x=0.100, y=0.700, z=0.27),
-        orientation=orientation)
+        orientation=v_orientation)
     rv_pick = Pose(
         position=Point(x=0.1, y=-0.69, z=0.27),
-        orientation=orientation)
+        orientation=v_orientation)
     lh_pick = Pose(
         position=Point(x=0.3, y=0.7, z=0.13),
-        orientation=orientation)
+        orientation=h_orientation)
     rh_pick = Pose(
         position=Point(x=0.3, y=-0.7, z=0.13),
-        orientation=orientation)
+        orientation=h_orientation)
 
     # base and height for the generated house of cards
     base = 3
