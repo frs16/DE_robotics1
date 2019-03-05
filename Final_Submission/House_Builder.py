@@ -29,7 +29,7 @@ def house_coordinates():
 
     # coefficients for alternating brick picking from middle
     coefficient_odd = [0, 1.1, -1.1, 2.2, -2.2]
-    coefficient_even = [0.55, -0.55, 1.65, -1.65]
+    coefficient_even = [-0.55, 0.55, -1.65, 1.65]
 
     #count layers
     count_layer = 1
