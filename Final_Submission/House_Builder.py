@@ -5,6 +5,7 @@ from geometry_msgs.msg import (
     Quaternion,
 )
 
+
 def house_coordinates():
 
     t = 0.06  #thickness
@@ -101,7 +102,7 @@ def house_coordinates():
 
     return list_of_positions
 
-def posify(Coordinates, orientation):
+def posify(Coordinates, v_orientation, h_orientation):
 
     block_poses = list()
     #if block_poses[i][j] = int
@@ -112,7 +113,7 @@ def posify(Coordinates, orientation):
         v =  Coordinates[0][g][2]
         Coordinates[0][g] =(Pose(
                 position=Point(x = p, y = u, z = v),
-                orientation=orientation))
+                orientation=v_orientation))
 
     if len(block_poses) == 5: #checks the bottom layer has been added to the list
         for i in range(0,4):
@@ -122,7 +123,7 @@ def posify(Coordinates, orientation):
             v =  Coordinates[1][g][2]
             Coordinates[1][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
-                      orientation=orientation))
+                      orientation=h_orientation))
 
     if len(block_poses) == 9: #Checks the bottom two layers
         for i in range(0,4):
@@ -132,7 +133,7 @@ def posify(Coordinates, orientation):
             v =  Coordinates[2][g][2]
             Coordinates[2][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
-                      orientation=orientation))
+                      orientation=v_orientation))
 
     if len(block_poses) == 13: #Checks the bottom three layers
         for i in range(0,3):
@@ -142,7 +143,7 @@ def posify(Coordinates, orientation):
             v =  Coordinates[3][g][2]
             Coordinates[3][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
-                      orientation=orientation))
+                      orientation=h_orientation))
 
     if len(block_poses) == 16: #Checks the bottom four layers
         for i in range(0,3):
@@ -152,7 +153,7 @@ def posify(Coordinates, orientation):
             v =  Coordinates[4][g][2]
             Coordinates[4][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
-                      orientation=orientation))
+                      orientation=v_orientation))
 
     if len(block_poses) == 19: #Checks the bottom four layers
         for i in range(0,2):
@@ -162,7 +163,7 @@ def posify(Coordinates, orientation):
             v =  Coordinates[5][g][2]
             Coordinates[5][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
-                      orientation=orientation))
+                      orientation=h_orientation))
 
     if len(block_poses) == 21:
         for i in range(0,2):
@@ -172,7 +173,7 @@ def posify(Coordinates, orientation):
             v =  Coordinates[6][g][2]
             Coordinates[6][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
-                      orientation=orientation))
+                      orientation=v_orientation))
 
     if len(block_poses) == 23:
         for i in range(0,1):
@@ -182,7 +183,7 @@ def posify(Coordinates, orientation):
             v =  Coordinates[7][g][2]
             Coordinates[7][g] = (Pose(
                        position=Point(x = p, y = u, z = v),
-                      orientation=orientation))
+                      orientation=h_orientation))
 
     print (Coordinates)
     return Coordinates

@@ -104,7 +104,7 @@ def main():
     base = 3
     height = 1
 
-    block_poses = posify(house_coordinates(), orientation)
+    block_poses = posify(house_coordinates(), v_orientation, h_orientation)
 
     # move to the desired starting angles
     hocl.move_to_start(left_start)
