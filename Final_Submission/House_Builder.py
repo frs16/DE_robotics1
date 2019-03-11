@@ -6,8 +6,8 @@ from geometry_msgs.msg import (
 )
 
 
-def house_coordinates():
-
+def house_coordinates(x,y,z):
+#at the moment x y, z = 0
     t = 0.06  #thickness
     w = 0.09  #width
     h = 0.2  #height
@@ -55,7 +55,7 @@ def house_coordinates():
 
                 #print(0,y,z)
 
-                list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
+                list_of_positions[count_layer-1][count_brick-1] = (x,y,z)
 
                 count_brick = count_brick + 1
 
@@ -70,7 +70,7 @@ def house_coordinates():
                 if count_layer == 8:
                     list_of_positions[7]=[(0.5,y,z)]
                 else:
-                    list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
+                    list_of_positions[count_layer-1][count_brick-1] = (x,y,z)
 
                 count_brick += 1
 
@@ -81,7 +81,7 @@ def house_coordinates():
 
                 z= int(((count_layer)/2))*(h+t) + h - 0.03 + 0.1
                 #print(0,y,z)
-                list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
+                list_of_positions[count_layer-1][count_brick-1] = (x,y,z)
 
                 count_brick = count_brick + 1
 
@@ -92,7 +92,7 @@ def house_coordinates():
 
                 z= int(((count_layer)/2))*(h+t) - 0.03 + 0.1
                 #print(0,y,z)
-                list_of_positions[count_layer-1][count_brick-1] = (0.5,y,z)
+                list_of_positions[count_layer-1][count_brick-1] = (x,y,z)
 
                 count_brick = count_brick + 1
 
